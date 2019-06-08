@@ -34,6 +34,7 @@ class Artist
     
     if !@songs.include?(song)
       @songs << song
+      binding.pry
     end
   end
   

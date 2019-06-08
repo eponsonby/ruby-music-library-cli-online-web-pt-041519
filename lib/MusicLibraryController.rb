@@ -16,6 +16,7 @@ class MusicLibraryController
     puts "To play a song, enter 'play song'."
     puts "To quit, type 'exit'."
     puts "What would you like to do?"
+<<<<<<< HEAD
       
       input = nil
       
@@ -31,6 +32,74 @@ class MusicLibraryController
         end
       end
 
+=======
+    gets.chomp
+    gets.chomp
+    gets.chomp
+    gets.chomp
+  end
+  
+  def list_songs
+<<<<<<< HEAD
+    counter = 0
+    song_library = Song.all.collect do |song|
+      [song.artist.name, song.name, song.genre.name]
+    end
+
+    sorted = song_library.sort {|a, b| a[1][0] <=> b[1][0]}
+    
+    binding.pry
+    numbered = sorted.collect do |song|
+      counter += 1
+      ["#{counter}. " + song[0], song[1..-1]].flatten
+    end
+
+    final_list = numbered.collect do |song|
+      song.join(" - ")
+    end
+
+    final_list.each do |song|
+      puts song
+    end
+    
+=======
+    counter = 1
+    songs_array = @importer.collect do |song|
+      song.split(" - ")
+    end
+    sorted = songs_array.sort {|a, b| a[1][0] <=> b[1][0]}
+    
+    sorted.collect do |song|
+      song.unshift("#{counter}.")
+      counter += 1
+    end
+    
+    nompthree = sorted.collect do |song|
+      song[3].gsub!(/(.mp3)/, "")
+      song[1] = song[0] + " " + song[1]
+      song
+    end
+  
+    dropped = nompthree.collect do |song|
+      song.drop(1)
+    end
+
+    withhyphen = dropped.collect do |song|
+      song.join(" - ")
+    end
+
+    withhyphen.flatten.each do |song|
+      puts song
+    end
+>>>>>>> ec85dae3ff50d39f7660af1c313b861e68c82c7e
+  
+  end
+  
+  def list_artists
+    counter = 0
+    artists = Artist.all.collect do |artist|
+      artist.name
+>>>>>>> 7fe8f5c86b5e4a928e8bdcd346c7c55ffdadad32
     end
     
     def list_songs
